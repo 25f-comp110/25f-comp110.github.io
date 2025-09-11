@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1757623054.4413047">
+  <link rel="stylesheet" href="/static/styles.css?v=1757624204.9849463">
 </head>
 
 <body>
@@ -67,10 +67,6 @@
 <li><a href="#conceptual">2. Conceptual</a></li>
 <li><a href="#code-snippet">3. Code Snippet</a></li>
 </ul></li>
-<li><a href="#solutions">Solutions</a>
-<ul>
-<li><a href="#conceptual-questions---solutions">Conceptual Questions - Solutions</a></li>
-</ul></li>
 </ul>
 </</ul>
                     </div>
@@ -79,7 +75,14 @@
         </div>
         <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="questions">Questions</h1>
 <h2 id="multiple-choice">1. Multiple Choice</h2>
-<p>1.1. Every <code>if</code> statement must be followed by a paired <code>else</code> branch. (T/F) 1.2. Lines contained in an <code>else</code> branch in Python do not have to be indented. (T/F) 1.3. You can name a variable <code>else</code> in your program without Python confusing your variable’s name and the <code>else</code> keyword. (If you are unsure, this is a good one to try yourself!) (T/F)</p>
+<p>1.1. Every <code>if</code> statement must be followed by a paired <code>else</code> branch. (T/F)</p>
+<p>1.2. Lines contained in an <code>else</code> branch in Python do not have to be indented. (T/F)</p>
+<p>1.3. You can name a variable <code>else</code> in your program without Python confusing your variable’s name and the <code>else</code> keyword. (If you are unsure, this is a good one to try yourself!) (T/F)</p>
+<details>
+<p><summary><b>SHOW SOLUTIONS</b></summary></p>
+<p>1.1. <code>False</code> 1.2. <code>False</code> 1.3. <code>False</code></p>
+</details>
+<p> </p>
 <!-- 
 ## 2. Inputting a Value
 
@@ -142,6 +145,13 @@ You might not need to use all and can use any multiple times: `while`, `<conditi
 <p>2.1. What does the <em>condition</em> of a conditional have to evaluate to in order to enter its <code>then</code> block?</p>
 <p>2.2. What does the <em>condition</em> of a conditional have to evaluate to in order to enter its <code>else</code> block?</p>
 <p>2.3. What happens when a <code>return</code> statement is encountered?</p>
+<details>
+<p><summary><b>SHOW SOLUTIONS</b></summary></p>
+<p>2.1. The condition must evaluate to <code>True</code>.</p>
+<p>2.2. The condition must evaluate to <code>False</code>.</p>
+<p>2.3. The return value is recorded in memory and the function is immediately exited.</p>
+</details>
+<p> </p>
 <!-- ## 3. Code Snippet 1
 
 All subquestions of this problem will refer to this pseudo code snippet:
@@ -177,11 +187,26 @@ All subquestions of this problem will refer to this pseudo code snippet:
 <p>3.2. What does the condition evaluate to? (Don’t do it in your head, draw a memory diagram!)</p>
 <p>3.3. What values should x, y, and/or z have to be assigned to in order for the else block to run?</p>
 <p>3.4. What other values can x, y, and/or z be assigned in order for the <code>if</code> block to run?</p>
-<hr />
-<p><a href="#conceptual-solutions">solutions</a></p>
-<h1 id="solutions">Solutions</h1>
-<h2 id="conceptual-questions---solutions">Conceptual Questions - Solutions</h2>
-<p>1.1. F 1.2. F 1.3. F</p>
+<details>
+<p><summary><b>SHOW SOLUTIONS</b></summary></p>
+<p>3.1. <code>not(x != y and x != "y")</code></p>
+<p>3.2. The condition evaluates to <code>True</code>.</p>
+<p>3.3. To ensure the <code>else</code> block runs in the given code, the condition <code>x != y and x != "y"</code> must be true. This means <code>x</code> should be different from <code>y</code> and <code>x</code> should also be different from the string <code>"y"</code>. For example, setting <code>x = "a"</code> and <code>y = "b"</code> will satisfy this condition, making the <code>else</code> block execute.</p>
+<p>3.4. To make the <code>if</code> block run, the condition <code>not(x != y and x != "y")</code> must be true, which happens when <code>x</code> is either the same as <code>y</code> or the same as <code>"y"</code>, or both. In the original code where <code>x = "y"</code>, <code>y = "x"</code>, and <code>z = "x"</code>, the <code>if</code> block runs as <code>not(x != y and x != "y")</code> evaluates to true.</p>
+</details>
+<p> </p>
+<!-- ---
+
+
+[solutions](#conceptual-solutions)
+
+# Solutions 
+
+## Conceptual Questions - Solutions
+
+1.1. F
+1.2. F
+1.3. F -->
 <!-- 4. 
     
     4.1 Any value < 11
@@ -225,22 +250,30 @@ OR
     while <condition>:
         <do_something>
 ``` -->
-<p>2.1. The condition must evaluate to <code>True</code>.</p>
-<p>2.2. The condition must evaluate to <code>False</code>.</p>
-<p>2.3. The return value is recorded in memory and the function is immediately exited. <!-- 
+<!-- 2.1. The condition must evaluate to `True`.
+
+2.2. The condition must evaluate to `False`.
+
+2.3. The return value is recorded in memory and the function is immediately exited. -->
+<!-- 
 3.1. `<condition1>` must not be met (condition should evaluate to `False`) AND `<condition2>` must be met (condition should evaluate to `True`).
 
 3.2. In this case, yes. If we had something like this:
 ```python
 if ("hello" == "hello") == False:
 ```
-the `<condition>` in this case would be everything in between the `if` and the `:`. In the pseudo-code, we are separating the `<condition>` to be separate from the rest (`== False`), while in real code the condition is always everything after the `if` and before the `:`. --></p>
-<hr />
-<p>3.1. <code>not(x != y and x != "y")</code></p>
-<p>3.2. The condition evaluates to <code>True</code>.</p>
-<p>3.3. To ensure the <code>else</code> block runs in the given code, the condition <code>x != y and x != "y"</code> must be true. This means <code>x</code> should be different from <code>y</code> and <code>x</code> should also be different from the string <code>"y"</code>. For example, setting <code>x = "a"</code> and <code>y = "b"</code> will satisfy this condition, making the <code>else</code> block execute.</p>
-<p>3.4. To make the <code>if</code> block run, the condition <code>not(x != y and x != "y")</code> must be true, which happens when <code>x</code> is either the same as <code>y</code> or the same as <code>"y"</code>, or both. In the original code where <code>x = "y"</code>, <code>y = "x"</code>, and <code>z = "x"</code>, the <code>if</code> block runs as <code>not(x != y and x != "y")</code> evaluates to true.</p>
-<hr />
+the `<condition>` in this case would be everything in between the `if` and the `:`. In the pseudo-code, we are separating the `<condition>` to be separate from the rest (`== False`), while in real code the condition is always everything after the `if` and before the `:`. -->
+<!-- ---
+
+3.1. `not(x != y and x != "y")`
+
+3.2. The condition evaluates to `True`.
+
+3.3. To ensure the `else` block runs in the given code, the condition `x != y and x != "y"` must be true. This means `x` should be different from `y` and `x` should also be different from the string `"y"`. For example, setting `x = "a"` and `y = "b"` will satisfy this condition, making the `else` block execute.
+
+3.4. To make the `if` block run, the condition `not(x != y and x != "y")` must be true, which happens when `x` is either the same as `y` or the same as `"y"`, or both. In the original code where `x = "y"`, `y = "x"`, and `z = "x"`, the `if` block runs as `not(x != y and x != "y")` evaluates to true.
+
+--- -->
 </div>
 
        

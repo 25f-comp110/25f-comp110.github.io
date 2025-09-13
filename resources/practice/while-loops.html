@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1757624555.1170697">
+  <link rel="stylesheet" href="/static/styles.css?v=1757792493.1886988">
 </head>
 
 <body>
@@ -64,10 +64,8 @@
 <li><a href="#questions">Questions</a>
 <ul>
 <li><a href="#conceptual">Conceptual</a></li>
-</ul></li>
-<li><a href="#solutions">Solutions</a>
-<ul>
-<li><a href="#conceptual-solutions">Conceptual Solutions</a></li>
+<li><a href="#memory-diagram">Memory Diagram</a></li>
+<li><a href="#code-writing">Code Writing</a></li>
 </ul></li>
 </ul>
 </</ul>
@@ -78,111 +76,216 @@
         <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="questions">Questions</h1>
 <h2 id="conceptual">Conceptual</h2>
 <ol type="1">
-<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</p>
-<pre><code> WORD: str = &quot;happy&quot;
- l1_idx: int = 0
- l2_idx: int = 0
- t1: str = &quot;&quot;
- t2: str = &quot;&quot;
- n_appearances: int = 0
-
- while l1_idx &lt; len(WORD):
-     t1 = WORD[l1_idx]
-     n_appearances = 1
-     l2_idx = 0
-
-     while l2_idx &lt; len(WORD):
-         t2 = WORD[l2_idx]
-
-         if (t1 == t2) and (l1_idx != l2_idx):
-             n_appearances = n_appearances + 1
-         l2_idx = l2_idx + 1
-     print(f&quot;{WORD[l1_idx]} appears {n_appearances} times.&quot;)
-     l1_idx = l1_idx + 1</code></pre></li>
-</ol>
-<p>1.1 What would happen if <code>while l1_idx &lt; len(WORD)</code> in line 8 was replaced with <code>while l1_idx &lt; len(WORD) - 1</code>? Why?</p>
-<p>1.2 What would happen if <code>l2_idx=0</code> was moved to inside the second while loop? In other words, what if lines 11-13 were changed to:</p>
-<pre><code>    while l2_idx &lt; len(WORD):
-        l2_idx = 0</code></pre>
-<p>1.3 What would happen if, in line 16, <code>if (t1 == t2) and (l1_idx != l2_idx):</code> was replaced with <code>if (t1 == t2):</code>? Why?</p>
-<p>1.4 What would happen if line 18 (<code>l2_idx = l2_idx + 1</code>) was removed? Why?</p>
-<p>1.5. What would happen if the <code>&lt;</code> symbol in line 8 was replaced with <code>&lt;=</code>? (In other words, what if it was changed to <code>while l1_idx &lt;= len(WORD):</code>)? Why?</p>
-<ol start="2" type="1">
-<li>Consider the following code snippet:</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>x <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>y <span class="op">=</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="bu">len</span>(y): </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    <span class="bu">print</span>(y[x])</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>x <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
-<p>What will be the outcome of this code? The commas indicate a new line.</p>
+<li><p>What happens if the condition of a while loop is initially <code>False</code>?</p>
 <ol type="a">
-<li>“h”, “e”, “l”, “l”, “o”<br />
-</li>
-<li><code>IndexError: list index out of range</code><br />
-</li>
-<li>The loop will run infinitely.<br />
-</li>
-<li>No output (the code contains an error)</li>
+<li><p>The loop will run once.</p></li>
+<li><p>The loop will not run at all.</p></li>
+<li><p>The loop will run infinitely.</p></li>
+<li><p>The loop will throw an error.</p></li>
+</ol></li>
+<li><p>If a <code>while</code> loop statement starts with, <code>while condition:</code>, what must <code>condition</code> evaluate to for the following <code>while</code> loop to execute at least once? What type is <code>condition</code>?</p></li>
 </ol>
-<hr />
-<ol start="3" type="1">
-<li>What happens if the condition of a <code>while</code> loop is initially <code>False</code>?</li>
-</ol>
-<ol type="a">
-<li>The loop will run once.<br />
-</li>
-<li>The loop will not run at all.<br />
-</li>
-<li>The loop will run infinitely.<br />
-</li>
-<li>The loop will throw an error.</li>
-</ol>
-<hr />
-<ol start="4" type="1">
-<li>What must the condition evaluate to for the following <code>while</code> loop to execute at least once?</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="cf">while</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">!=</span> <span class="dv">4</span> <span class="op">+</span> <span class="fl">5.6</span>: </span></code></pre></div>
-<ol type="a">
-<li><code>True</code><br />
-</li>
-<li><code>False</code><br />
-</li>
-<li><code>true</code><br />
-</li>
-<li><code>false</code><br />
-</li>
-<li><code>None</code></li>
-</ol>
-<hr />
-<p><a href="#conceptual-solutions">Solutions</a></p>
-<h1 id="solutions">Solutions</h1>
-<h2 id="conceptual-solutions">Conceptual Solutions</h2>
+<details>
+<p><summary>SHOW SOLUTIONS</summary></p>
 <ol type="1">
-<li><strong>Here’s a link to a <a href="https://www.youtube.com/watch?v=NqNuPjnq-UE">video of the solution</a>!</strong></li>
+<li>B: The loop will not run at all.</li>
+<li><code>condition</code> must be <code>True</code> to enter the loop. Its type is a <code>bool</code>.</li>
 </ol>
-<p><img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol1.png" alt ="The memory diagram includes a box on the top labeled Output and a box on the bottom labeled Stack, next to an empty area labeled Heap. 
+</details>
+<p> </p>
+<h2 id="memory-diagram">Memory Diagram</h2>
+<ol type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="dv">1</span>     <span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="dv">2</span>         <span class="st">&quot;&quot;&quot;Main Function&quot;&quot;&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="dv">3</span>         y: <span class="bu">int</span> <span class="op">=</span> g(<span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="dv">4</span>         f(y)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="dv">5</span>         <span class="bu">print</span>(g(f(<span class="dv">3</span>)))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="dv">6</span>         </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="dv">7</span>     <span class="kw">def</span> f(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="dv">8</span>         <span class="st">&quot;&quot;&quot;Function 0&quot;&quot;&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="dv">9</span>         <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="dv">10</span>            <span class="bu">print</span>(<span class="bu">str</span>(x) <span class="op">+</span> <span class="st">&quot; is even&quot;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="dv">11</span>        <span class="cf">else</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="dv">12</span>            x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="dv">13</span>        <span class="cf">return</span> x</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="dv">14</span>        </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="dv">15</span>    <span class="kw">def</span> g(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a><span class="dv">16</span>        <span class="st">&quot;&quot;&quot;Function 1&quot;&quot;&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="dv">17</span>        <span class="cf">while</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a><span class="dv">18</span>            x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="dv">19</span>        <span class="cf">return</span> x</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a><span class="dv">20</span> </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a><span class="dv">21</span>    main()</span></code></pre></div>
+<p>1.1. Why is it that <code>main()</code> is defined above <code>f()</code> and <code>g()</code>, but we are able to call <code>f()</code> and <code>g()</code> inside <code>main()</code> without errors?</p>
+<p>1.2. On line 5, when <code>print(g(f(3)))</code> is called, is the code block inside of the <code>while</code> loop ever entered? Why or why not?</p>
+<p>1.3. What would happen if a line was added to the end of the snippet that said <code>print(x)</code>. Why?</p></li>
+</ol>
+<details>
+<p><summary>SHOW SOLUTIONS</summary></p>
+<ol type="1">
+<li><figure>
+<img src="https://25f-comp110.github.io/static/practice-mem-diagrams/Qz2-md.png" alt="" /><figcaption>While Loop Memory Diagram</figcaption>
+</figure>
+<p>1.1 Even though main is defined before f and g, it isn’t called until after f and g are defined.</p>
+<p>1.2 No because x = 4, so x % 2 == 1 is False, and therefore the code block inside is never run.</p>
+<p>1.3 There would be an error because x is a local variable inside both f and g. Therefore, the program does not recognize that x exists in this context.</p></li>
+</ol>
+</details>
+<p> </p>
+<h2 id="code-writing">Code Writing</h2>
+<ol type="1">
+<li><p>Write a function named <code>sum_or_factorial</code> using <code>while</code> loops that has an <code>int</code> parameter <code>number</code> and behaves in the following way:</p>
+<p>If <code>number</code> is negative, return <code>-1</code>.</p>
+<p>If <code>number</code> is even, return the sum of all positive integers up to and <em>including</em> <code>number</code>.</p>
+<p>If <code>number</code> is odd, return the product of all positive integers up to and <em>including</em> <code>number</code> (the factorial of <code>number</code>).</p></li>
+</ol>
+<details>
+<p><summary>SHOW SOLUTIONS</summary></p>
+<p>Note: There are many ways you could write this function.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dv">1</span>     <span class="kw">def</span> sum_or_factorial(number: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="dv">2</span>         <span class="st">&quot;&quot;&quot;Returns the sum up to number if even or the factorial of number if odd.&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="dv">3</span>         result: <span class="bu">int</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="dv">4</span>         <span class="cf">if</span> number <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="dv">5</span>             <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="dv">6</span>         <span class="cf">elif</span> number <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="dv">7</span>             result <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="dv">8</span>             idx: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="dv">9</span>             <span class="cf">while</span> idx <span class="op">&lt;=</span> number:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="dv">10</span>                result <span class="op">=</span> result <span class="op">+</span> idx</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="dv">11</span>                idx <span class="op">=</span> idx <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="dv">12</span>        <span class="cf">else</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="dv">13</span>            result <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="dv">14</span>            idx: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="dv">15</span>            <span class="cf">while</span> idx <span class="op">&lt;=</span> number:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="dv">16</span>                result <span class="op">=</span> result <span class="op">*</span> idx</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="dv">17</span>                idx <span class="op">=</span> idx <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="dv">18</span>        <span class="cf">return</span> result</span></code></pre></div>
+</details>
+<p> </p>
+<!-- ## Conceptual
+
+1. Produce a memory diagram for the following code snippet, being sure to include its stack and output.  
+
+        WORD: str = "happy"
+        l1_idx: int = 0
+        l2_idx: int = 0
+        t1: str = ""
+        t2: str = ""
+        n_appearances: int = 0
+
+        while l1_idx < len(WORD):
+            t1 = WORD[l1_idx]
+            n_appearances = 1
+            l2_idx = 0
+
+            while l2_idx < len(WORD):
+                t2 = WORD[l2_idx]
+
+                if (t1 == t2) and (l1_idx != l2_idx):
+                    n_appearances = n_appearances + 1
+                l2_idx = l2_idx + 1
+            print(f"{WORD[l1_idx]} appears {n_appearances} times.")
+            l1_idx = l1_idx + 1
+
+1.1 What would happen if `while l1_idx < len(WORD)` in line 8 was replaced with `while l1_idx < len(WORD) - 1`? Why?
+
+1.2 What would happen if `l2_idx=0` was moved to inside the second while loop? In other words, what if lines 11-13 were changed to:
+
+
+```
+    while l2_idx < len(WORD):
+        l2_idx = 0
+```
+
+1.3 What would happen if, in line 16, `if (t1 == t2) and (l1_idx != l2_idx):` was replaced with `if (t1 == t2):`? Why?
+
+1.4 What would happen if line 18 (`l2_idx = l2_idx + 1`) was removed? Why?
+
+1.5. What would happen if the `<` symbol in line 8 was replaced with `<=`? (In other words, what if it was changed to `while l1_idx <= len(WORD):`)? Why?
+
+
+2.  Consider the following code snippet:
+
+```python
+x = 0 
+y = "hello"
+
+while x < len(y): 
+    print(y[x])
+x += 1
+```
+
+What will be the outcome of this code? The commas indicate a new line.
+
+a. "h", "e", "l", "l", "o"  
+b. `IndexError: list index out of range`  
+c. The loop will run infinitely.  
+d. No output (the code contains an error)
+
+---
+
+3. What happens if the condition of a `while` loop is initially `False`?
+
+a. The loop will run once.  
+b. The loop will not run at all.  
+c. The loop will run infinitely.  
+d. The loop will throw an error.
+
+---
+
+4. What must the condition evaluate to for the following `while` loop to execute at least once?
+
+```python
+while 3 + 3 != 4 + 5.6: 
+```
+
+a. `True`  
+b. `False`  
+c. `true`  
+d. `false`  
+c. `None`
+
+---
+
+
+[Solutions](#conceptual-solutions)
+
+# Solutions
+
+## Conceptual Solutions
+
+1. **Here's a link to a [video of the solution](https://www.youtube.com/watch?v=NqNuPjnq-UE)!**
+
+<img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol1.png" alt ="The memory diagram includes a box on the top labeled Output and a box on the bottom labeled Stack, next to an empty area labeled Heap. 
 The Stack contains the variables WORD, l1 underscore idx, l2 underscore idx, t1, t2, and n underscore appearances. The WORD variable contains the value happy in quotes. 
 The variable l1 underscore idx has the value of 5, with previous values of 0, 1, 2, 3, and 4 all crossed out. L2 underscore idx has the final value of 5, with previous values of 0, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, and 4 all crossed out. T1 has the final value of y with previous values of an empty string, h, a, p, p, and y all in quotes and crossed out. T2 has the final value of y (in quotes) with previous values of an empty string, h, a, p, p, y, h, a, p, p, y, h, a, p, p, y, h, a, p, p, y, h, a, p, and p all in quote and crossed out. Finally, the variable n underscore appearances has the final value of 1 with previous values of 0, 1, 1, 1, 2, 1, and 2 all crossed out. 
 The output box contains the sentence h appears 1 times. Below that, on a separate line is the output a appears 1 times. Next, is the line p appears 2 times., p appears 2 times., and y appears 1 times. each on separate lines. 
-"/></p>
-<p>(We do not <em>require</em> that you write out all interim values as long as the initial and final values are correct like in the solution below. However, writing the interim values will help for practice purposes and to avoid mistakes!)</p>
-<p><img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol2.jpg" alt="The memory diagram has three columns, labeled from left to right Stack, Heap, and Output. Under the stack, there is a frame labeled Globals. 
+"/>
+
+(We do not *require* that you write out all interim values as long as the initial and final values are correct like in the solution below. However, writing the interim values will help for practice purposes and to avoid mistakes!)
+
+<img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol2.jpg" alt="The memory diagram has three columns, labeled from left to right Stack, Heap, and Output. Under the stack, there is a frame labeled Globals. 
 The globals frame contains the variables WORD, l1 underscore idx, l2 underscore idx, t1, t2, and n underscore appearances. The WORD variable contains the value happy in quotes. The variable l1 underscore idx has the value of 5 with the previous value of 0 crossed out. The variable l2 underscore idx has the value of 5 with the previous value of 0 crossed out. The variable t1 has the final value of y in quotes, with the previous value an empty string in quotes crossed out. The variable t2 has the final value of y in quotes, with the previous value of an empty string in quotes crossed out. Finally, the variable n underscore appearances has the value 1 with the previous value 0 crossed out.
 The heap column is empty.
 The output column contains the sentence h appears 1 times. Below that, on a separate line is the output a appears 1 times. Next is the line p appears 2 times., p appears 2 times., and y appears 1 times. each on separate lines. 
-"></p>
-<p>1.1 “y appears 1 times.” would not print. This is because <code>l1_idx</code> will not enter the while loop for <code>l1_idx = 4</code>. (For more practice, it’d be good to diagram this instance out to see how it would impact the final values of other variables.)</p>
-<p>1.2 An infinite loop would occur because <code>l2_idx</code> would always equal <code>1</code> when returning to the top of the loop, and therefore <code>l2_idx &lt; len(WORD)</code> will always be True.</p>
-<p>1.3 If <code>l1_idx != l2_idx</code> is no longer required, this means that each letter can count itself twice. For example, <code>WORD[0] == WORD[0]</code> is true, so <code>n_appearances</code> for <code>"h"</code> would increase to <code>2</code>.</p>
-<p>1.4 There would be an infinite loop because <code>l2_idx</code> will never increase, and therefore <code>l2_idx &lt; len(WORD)</code> will always be True.</p>
-<p>1.5 There would be an index error because there would be the case where <code>l1_idx = 5</code>, so on line 9 <code>WORD[5]</code> would be searching for the element at index 5 in <code>"happy"</code>, when the indexes only go up to 4.</p>
-<ol start="2" type="1">
-<li><p><strong>c. The loop will run infinitely.</strong> This is because <code>x += 1</code> is outside the loop, so <code>x</code> will never increase within the loop, causing an infinite loop.</p></li>
-<li><p><strong>b. The loop will not run at all.</strong> If the condition is initially <code>False</code>, the loop will skip entirely.</p></li>
-<li><p><strong>a. True.</strong> The condition must evaluate to <code>True</code> for the loop to execute at least once. In this case, the condition <code>3 + 3 != 4 + 5.6</code> is always true, so the loop will run.</p></li>
-</ol>
+">
+
+1.1 "y appears 1 times." would not print. This is because `l1_idx` will not enter the while loop for `l1_idx = 4`. (For more practice, it'd be good to diagram this instance out to see how it would impact the final values of other variables.)
+
+1.2 An infinite loop would occur because `l2_idx` would always equal `1` when returning to the top of the loop, and therefore `l2_idx < len(WORD)` will always be True.
+
+1.3 If `l1_idx != l2_idx` is no longer required, this means that each letter can count itself twice. For example, `WORD[0] == WORD[0]` is true, so `n_appearances` for `"h"` would increase to `2`.
+
+1.4 There would be an infinite loop because `l2_idx` will never increase, and therefore `l2_idx < len(WORD)` will always be True.
+
+1.5 There would be an index error because there would be the case where `l1_idx = 5`, so on line 9 `WORD[5]` would be searching for the element at index 5 in `"happy"`, when the indexes only go up to 4.
+
+2. **c. The loop will run infinitely.** This is because `x += 1` is outside the loop, so `x` will never increase within the loop, causing an infinite loop.
+
+3. **b. The loop will not run at all.** If the condition is initially `False`, the loop will skip entirely.
+
+4. **a. True.** The condition must evaluate to `True` for the loop to execute at least once. In this case, the condition `3 + 3 != 4 + 5.6` is always true, so the loop will run. -->
 </div>
 
        

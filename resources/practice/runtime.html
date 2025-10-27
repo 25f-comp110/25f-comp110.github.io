@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1761319212.2708735">
+  <link rel="stylesheet" href="/static/styles.css?v=1761608167.2119563">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                 <div id="overview-links">
                     <div id="TOC" role="doc-toc">
                         <ul class="overview-item"><ul>
-<li><a href="#questions">Questions</a>
+<li><a href="#runtime-and-big-o-notation-questions">Runtime and Big-O Notation Questions</a>
 <ul>
 <li><a href="#conceptual">Conceptual</a></li>
 </ul></li>
@@ -71,46 +71,119 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="questions">Questions</h1>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="runtime-and-big-o-notation-questions">Runtime and Big-O Notation Questions</h1>
 <h2 id="conceptual">Conceptual</h2>
 <ol type="1">
-<li>True or False: A function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em>)</span> will always run faster than a function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span> for all inputs.
+<li><p>True or False: A function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em>)</span> will always run faster than a function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span> for all inputs.</p>
 <details>
-<summary>SOLUTION</summary> This is False. A function with big-O notation of <span class="math inline"><em>O</em>(<em>n</em>)</span> will theoretically run faster than a function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span> on a <em>worst case</em> input.
+<p><summary>SOLUTION</summary> This is False. A function with big-O notation of <span class="math inline"><em>O</em>(<em>n</em>)</span> will theoretically run faster than a function with a big-O notation of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span> on a <em>worst case</em> input.</p>
 </details></li>
-<li>What type of input does Big-O notation consider?
+<li><p>What type of input does Big-O notation consider?</p>
+<ol type="a">
+<li><p>Best Case</p></li>
+<li><p>Worst Case</p></li>
+<li><p>Average Case</p></li>
+</ol></li>
+</ol>
 <details>
 <summary>SOLUTION</summary> Worst Case.
-</details></li>
-<li>Big-O notation provides a precise measurement of the actual runtime of an algorithm on a specific machine.
+</details>
+<ol start="3" type="1">
+<li><p>True or False: Big-O notation provides a precise measurement of the actual runtime of an algorithm on a specific machine.</p>
 <details>
-<summary>SOLUTION</summary> False.
+<p><summary>SOLUTION</summary> False.</p>
 </details></li>
-<li>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(1)</span>, it means its runtime is:
+<li><p>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(1)</span>, it means its runtime is:</p>
+<ol type="a">
+<li><p>Linear</p></li>
+<li><p>Constant</p></li>
+<li><p>Quadratic</p></li>
+<li><p>Exponential</p>
 <details>
-<summary>SOLUTION</summary> Constant
+<p><summary>SOLUTION</summary> Constant</p>
 </details></li>
-<li>If an algorithm has a time complexity of$ O(n)$, it means its runtime is:
+</ol></li>
+<li><p>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(<em>n</em>)</span>, it means its runtime is:</p>
+<ol type="a">
+<li><p>Linear</p></li>
+<li><p>Constant</p></li>
+<li><p>Quadratic</p></li>
+<li><p>Exponential</p>
 <details>
-<summary>SOLUTION</summary> Linear
+<p><summary>SOLUTION</summary> Linear</p>
 </details></li>
-<li>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span>, it means its runtime is:
+</ol></li>
+<li><p>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span>, it means its runtime is:</p>
+<ol type="a">
+<li><p>Linear</p></li>
+<li><p>Constant</p></li>
+<li><p>Quadratic</p></li>
+<li><p>Exponential</p>
 <details>
-<summary>SOLUTION</summary> Quadratic
+<p><summary>SOLUTION</summary> Quadratic</p>
 </details></li>
-<li>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>, it means its runtime is:
+</ol></li>
+<li><p>If an algorithm has a time complexity of <span class="math inline"><em>O</em>(2<sup><em>n</em></sup>)</span>, it means its runtime is:</p>
+<ol type="a">
+<li><p>Linear</p></li>
+<li><p>Constant</p></li>
+<li><p>Quadratic</p></li>
+<li><p>Exponential</p>
 <details>
-<summary>SOLUTION</summary> Exponential
+<p><summary>SOLUTION</summary> Exponential</p>
 </details></li>
-<li>Insertion sort has a big-O runtime of:
+</ol></li>
+<li><p>Insertion sort has a big-O runtime of:</p>
 <details>
-<summary>SOLUTION</summary> <span class="math inline"><em>O</em>(<em>n</em>)</span>
+<p><summary>SOLUTION</summary> <span class="math inline"><em>O</em>(<em>n</em>)</span></p>
 </details></li>
-<li>Selection sort has a big-O runtime of:
+<li><p>Selection sort has a big-O runtime of:</p>
 <details>
-<summary>SOLUTION</summary> <span class="math inline"><em>O</em>(<em>n</em>)</span>
+<p><summary>SOLUTION</summary> <span class="math inline"><em>O</em>(<em>n</em>)</span></p>
 </details></li>
+<li><p>Consider the following function: <code>py     def foo(outer_input: list[str], inner_input: list[str]) -&gt; None:         """Nested loop!"""         for x in outer_input:             for y in inner_input:                 print(f"{x} and {y}!")         return None</code></p>
+<p>10.1. Assuming <code>outer_input</code> and <code>inner_input</code> both have length <span class="math inline"><em>n</em></span>, what is the big-O runtime of the function <code>foo</code>?</p>
+<p>10.2. If <code>outer_input</code> has length <span class="math inline"><em>n</em><sup>2</sup></span> and <code>inner_input</code> has length <span class="math inline"><em>n</em></span>, what would be the big-O runtime of the function <code>foo</code>?</p>
+<details>
+<p><summary>SOLUTION</summary></p></li>
 </ol>
+<p>10.1. <span class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span></p>
+10.2. <span class="math inline"><em>O</em>(<em>n</em><sup>3</sup>)</span>
+</details>
+<ol start="11" type="1">
+<li><p>Which of the following is true about algorithms?</p>
+<ol type="a">
+<li><p>The result of an algorithm is only affected by its inputs.</p></li>
+<li><p>An algorithm can have side effects which affect its environment.</p></li>
+<li><p>An algorithm can take an infinite number of steps to complete.</p></li>
+<li><p>The only effect that an algorithm can have is on its result.</p></li>
+</ol></li>
+</ol>
+<details>
+<summary>SOLUTION</summary> The answer is b, since algorithms are a finite series of steps (eliminating c) and can be affected by and have an effect on their environment (eliminating a and d, and showing that b is true).
+</details>
+<ol start="12" type="1">
+<li>Consider the following code snippets:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>unc_pid_range: <span class="bu">dict</span>[<span class="bu">int</span>, <span class="bu">bool</span>] <span class="op">=</span> {<span class="dv">730000000</span>: <span class="va">False</span>, <span class="dv">730000001</span>: <span class="va">False</span>, ..., <span class="dv">730999999</span>: <span class="va">False</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>prime_numbers: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, ..., <span class="dv">1000000007</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="cf">for</span> pid <span class="kw">in</span> unc_pids:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="cf">if</span> pid <span class="kw">in</span> prime_numbers:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>        unc_pid_range[pid] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Prime PID found: </span><span class="sc">{</span>pid<span class="sc">}</span><span class="ss">!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>unc_pid_range: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">730000000</span>, <span class="dv">730000001</span>, ..., <span class="dv">730999999</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>prime_numbers: <span class="bu">dict</span>[<span class="bu">int</span>, <span class="bu">bool</span>] <span class="op">=</span> {<span class="dv">2</span>: <span class="va">False</span>, <span class="dv">3</span>: <span class="va">False</span>, <span class="dv">5</span>: <span class="va">False</span>, <span class="dv">7</span>: <span class="va">False</span>, ..., <span class="dv">1000000007</span>: <span class="va">False</span>}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="cf">for</span> pid <span class="kw">in</span> unc_pids:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="cf">if</span> pid <span class="kw">in</span> prime_numbers:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>        prime_numbers[pid] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Prime PID found: </span><span class="sc">{</span>pid<span class="sc">}</span><span class="ss">!&quot;</span>)</span></code></pre></div>
+<p>Let <span class="math inline"><em>n</em></span> be the size of the <code>unc_pid_range</code> lists and let <span class="math inline"><em>m</em></span> be the size of both the <code>prime_numbers</code> list and dictionary. What are the runtimes of the two code snippets in big-O notation? Which would you choose to use if you cared the most about speed?</p>
+<details>
+<p><summary>SOLUTION</summary></p>
+The first code snippet runs in time <span class="math inline"><em>O</em>(<em>m</em> ⋅ <em>n</em>)</span> and the second runs in time <span class="math inline"><em>O</em>(<em>n</em>)</span>. This is because the lookup time (the <code>in</code> operator) takes constant time on a dictionary and linear time on a list, so in the first snippet you do an <span class="math inline"><em>O</em>(<em>m</em>)</span> operation <span class="math inline"><em>n</em></span> times so $O(m n), but in the second you do an <span class="math inline"><em>O</em>(1)</span> operation <span class="math inline"><em>n</em></span> times so <span class="math inline"><em>O</em>(<em>n</em>)</span>. Thus if you care about speed the most you would use the second method.
+</details>
 </div>
 
        
@@ -118,7 +191,7 @@
     </div> 
 
     <div class="authors-box bg-dark mt-4 py-3 ps-4">
-      <span> Contributor(s): Alyssa Lytle</span>
+      <span> Contributor(s):        Alyssa Lytle, Benjamin Eldridge</span>
     </div>
   </div>
   <div class='link-page mt-3 container'>

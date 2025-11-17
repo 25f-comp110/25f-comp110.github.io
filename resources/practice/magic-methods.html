@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1763266238.6607776">
+  <link rel="stylesheet" href="/static/styles.css?v=1763343698.5162444">
 </head>
 
 <body>
@@ -136,97 +136,108 @@
 <p>1.2. Fill in the <code>__gt__</code> method in two ways, first as if the blank in the docstring said “area” and second as if the blank in the docstring said “perimeter”. In both, make sure to use the <code>area</code> and <code>perimeter</code> methods that you defined (the two implementations of <code>__gt__</code> should look very similar).</p>
 <p>1.3. (Challenge Question) How could you equivalently write this class definition while using only two attributes? How would your <code>area</code>, <code>perimeter</code> methods change with only two attributes? Would your <code>__gt__</code> method change (in either case, area or perimeter)?</p>
 <p>1.4. (Challenge Question) Write a <code>__str__</code> method for <code>Rectangle</code> that works like in the following example:</p>
-<pre><code>&gt;&gt;&gt; my_rect: Rectangle = Rectangle(Point(0, 0), Point(1, 0), Point(0, 1), Point(1, 1))
-&gt;&gt;&gt; print(my_rect)
-(0, 1) (1, 1)
-(0, 0) (1, 0)
-Area: 1
-Perimeter: 4</code></pre>
-<p>Hint: Use <code>"\n"</code> to add new lines! Example: <code>&gt;&gt;&gt; print("Hello!\nHello again!")  Hello!  Hello again!</code></p></li>
+<pre>
+ <div class="terminal">$ python 
+ >>> my_rect: Rectangle = Rectangle(Point(0, 0), Point(1, 0), Point(0, 1), Point(1, 1))
+ >>> print(my_rect)
+ (0, 1) (1, 1)
+ (0, 0) (1, 0)
+ Area: 1
+ Perimeter: 4
+ </div>
+ </pre>
+<p>Hint: Use <code>"\n"</code> to add new lines! Example:</p>
+<pre>
+ <div class="terminal">$ python 
+ >>> print("Hello!\nHello again!")
+ Hello!
+ Hello again!
+ </div>
+ </pre></li>
 </ol>
 <details>
 <p><summary>SOLUTIONS</summary></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>    <span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    <span class="co"># Included for context, and so you can run it yourself!</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="kw">class</span> Point:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>        x: <span class="bu">float</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>        y: <span class="bu">float</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x: <span class="bu">float</span>, y: <span class="bu">float</span>):</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>            <span class="va">self</span>.x <span class="op">=</span> x</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>            <span class="va">self</span>.y <span class="op">=</span> y</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.x}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.y}</span><span class="ss">)&quot;</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;Point(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.x}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.y}</span><span class="ss">)&quot;</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>    <span class="kw">class</span> Rectangle:</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>        bottom_left: Point</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>        bottom_right: Point</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a>        top_left: Point</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>        top_right: Point</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, bl: Point, br: Point, tl: Point, tr: Point):</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a>            <span class="va">self</span>.bottom_left <span class="op">=</span> bl</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a>            <span class="va">self</span>.bottom_right <span class="op">=</span> br</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a>            <span class="va">self</span>.top_left <span class="op">=</span> tl</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a>            <span class="va">self</span>.top_right <span class="op">=</span> tr</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a>        <span class="co"># 1.1</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a>        <span class="kw">def</span> area(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the area of the rectangle.&quot;&quot;&quot;</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.bottom_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_left.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a>            <span class="cf">return</span> x_length <span class="op">*</span> y_length</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a>        <span class="kw">def</span> perimeter(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the perimeter of the rectangle.&quot;&quot;&quot;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.bottom_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_left.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true"></a>            <span class="cf">return</span> (x_length <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y_length <span class="op">*</span> <span class="dv">2</span>)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true"></a>        <span class="co"># 1.2</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true"></a>        <span class="co"># Note: In a real class definition it would be incorrect to have</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true"></a>        <span class="co"># two methods with the same name like this.</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other: Rectangle) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns True if self has a larger area than other.&quot;&quot;&quot;</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true"></a>            <span class="cf">return</span> <span class="va">self</span>.area() <span class="op">&gt;</span> other.area()</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true"></a>        </span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other: Rectangle) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns True if self has a larger perimeter than other.&quot;&quot;&quot;</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true"></a>            <span class="cf">return</span> <span class="va">self</span>.perimeter() <span class="op">&gt;</span> other.perimeter()</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true"></a>        <span class="co"># 1.4</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true"></a>        </span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>top_left<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>top_right<span class="sc">}</span><span class="ch">\n</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>bottom_left<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>bottom_right<span class="sc">}</span><span class="ch">\n</span><span class="ss">Area: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>area()<span class="sc">}</span><span class="ch">\n</span><span class="ss">Perimeter: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>perimeter()<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    <span class="co"># Included for context, and so you can run it yourself!</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="kw">class</span> Point:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>        x: <span class="bu">float</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>        y: <span class="bu">float</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x: <span class="bu">float</span>, y: <span class="bu">float</span>):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>            <span class="va">self</span>.x <span class="op">=</span> x</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>            <span class="va">self</span>.y <span class="op">=</span> y</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.x}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.y}</span><span class="ss">)&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;Point(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.x}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.y}</span><span class="ss">)&quot;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>    <span class="kw">class</span> Rectangle:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a>        bottom_left: Point</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a>        bottom_right: Point</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>        top_left: Point</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a>        top_right: Point</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, bl: Point, br: Point, tl: Point, tr: Point):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a>            <span class="va">self</span>.bottom_left <span class="op">=</span> bl</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a>            <span class="va">self</span>.bottom_right <span class="op">=</span> br</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a>            <span class="va">self</span>.top_left <span class="op">=</span> tl</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a>            <span class="va">self</span>.top_right <span class="op">=</span> tr</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a>        <span class="co"># 1.1</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true"></a>        <span class="kw">def</span> area(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the area of the rectangle.&quot;&quot;&quot;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.bottom_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_left.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true"></a>            <span class="cf">return</span> x_length <span class="op">*</span> y_length</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true"></a>        <span class="kw">def</span> perimeter(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the perimeter of the rectangle.&quot;&quot;&quot;</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.bottom_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_left.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true"></a>            <span class="cf">return</span> (x_length <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y_length <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true"></a>        <span class="co"># 1.2</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true"></a>        <span class="co"># Note: In a real class definition it would be incorrect to have</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true"></a>        <span class="co"># two methods with the same name like this.</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other: Rectangle) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns True if self has a larger area than other.&quot;&quot;&quot;</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true"></a>            <span class="cf">return</span> <span class="va">self</span>.area() <span class="op">&gt;</span> other.area()</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true"></a>        </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other: Rectangle) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns True if self has a larger perimeter than other.&quot;&quot;&quot;</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true"></a>            <span class="cf">return</span> <span class="va">self</span>.perimeter() <span class="op">&gt;</span> other.perimeter()</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true"></a>        <span class="co"># 1.4</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true"></a>        </span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>top_left<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>top_right<span class="sc">}</span><span class="ch">\n</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>bottom_left<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>bottom_right<span class="sc">}</span><span class="ch">\n</span><span class="ss">Area: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>area()<span class="sc">}</span><span class="ch">\n</span><span class="ss">Perimeter: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>perimeter()<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
 <p>For question 1.3, you can represent a rectangle with just two of its opposite corners, since the bottom left’s x coordinate should be the same as it’s top left x coordinate, and the same with the bottom and top right’s x. Similarly, the bottom left’s y coordinate should be the same as the bottom right’s y coordinate, and the same with the top left and top right’s y.</p>
 <p>The <code>area</code> and <code>perimeter</code> methods you wrote previously might be the same, but likely are not since the most intuitive way to measure the x and y length of a rectangle would be on the same side. But by the same reasoning as we used to know where the other two corners are, we can calculate the x and y lengths like how it is shown below.</p>
 <p>The implementation of <code>__gt__</code> would not change in either case, since <code>area</code> and <code>perimeter</code> would be the ones that changed but would still work as intended for you to compare the two of them!</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>    <span class="kw">class</span> Rectangle:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>        bottom_left: Point</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>        top_right: Point</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, bl: Point, tr: Point):</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>            <span class="va">self</span>.bottom_left <span class="op">=</span> bl</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>            <span class="va">self</span>.top_right <span class="op">=</span> tr</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>        <span class="kw">def</span> area(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the area of the rectangle.&quot;&quot;&quot;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>            <span class="cf">return</span> x_length <span class="op">*</span> y_length</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>        <span class="kw">def</span> perimeter(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the perimeter of the rectangle.&quot;&quot;&quot;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>            <span class="cf">return</span> (x_length <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y_length <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>    <span class="kw">class</span> Rectangle:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>        bottom_left: Point</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>        top_right: Point</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, bl: Point, tr: Point):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>            <span class="va">self</span>.bottom_left <span class="op">=</span> bl</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>            <span class="va">self</span>.top_right <span class="op">=</span> tr</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>        <span class="kw">def</span> area(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the area of the rectangle.&quot;&quot;&quot;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>            <span class="cf">return</span> x_length <span class="op">*</span> y_length</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>        <span class="kw">def</span> perimeter(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Returns the perimeter of the rectangle.&quot;&quot;&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>            x_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.x <span class="op">-</span> <span class="va">self</span>.bottom_left.x</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>            y_length: <span class="bu">int</span> <span class="op">=</span> <span class="va">self</span>.top_right.y <span class="op">-</span> <span class="va">self</span>.bottom_left.y</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>            <span class="cf">return</span> (x_length <span class="op">*</span> <span class="dv">2</span>) <span class="op">+</span> (y_length <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div>
 </details>
 </div>
 
